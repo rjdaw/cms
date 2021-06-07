@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="panel-heading clearfix">
+      <h1 class="panel-title pull-left">{{ contact.name }}</h1>
+      <span class="pull-left">
+        <img 
+        [src]="contact.imagePath" 
+        alt="{{ contact.name }}" 
+        class="img-responsive" 
+        style="max-height: 50px;">
+    </span>
+      <button class="btn btn-primary pull-right">Edit</button>
+      <button class="btn btn-danger pull-right">Delete</button>
+    </div>
+    <div class="panel-body">
+        <a 
+        href="#" 
+        class="list-group-item clearfix">
+            <div class="pull-left">
+                <p class="list-group-item-heading">Email: {{ contact.email }}</p>
+                <p class="list-group-item-heading">Email: {{ contact.phone }}</p>
+            </div>
+            
+        </a>
+  
+    </div>
+  </div>
+  
