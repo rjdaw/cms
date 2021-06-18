@@ -9,7 +9,7 @@ export class Document {
                 name: string,
                 description: string,
                 url: string,
-                children: Document[]) {
+                children ? : Document[]) {
         this.id          = id;
         this.name        = name;
         this.description = description;
