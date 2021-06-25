@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Document } from '../document.model';
+import { DocumentService } from '../document.service';
 
 @Component({
   selector: 'cms-document-list',
@@ -7,20 +8,21 @@ import { Document } from '../document.model';
   styleUrls: ['./document-list.component.css']
 })
 export class DocumentListComponent implements OnInit {
-  @Output() selectedDocumentEvent = new EventEmitter<Document>();
-  documents: Document[] = [
-    new Document(1, 'Cool Document', 'It is cool indeed', 'https://url1.com'),
-    new Document(2, 'Nice Document', 'It is nice indeed', 'https://url2.com'),
-    new Document(3, 'Magic Document', 'It is magic indeed', 'https://url3.com'),
-    new Document(4, 'Great Document', 'It is great indeed', 'https://url4.com')
-  ]
-  constructor() { }
+  documents: Document[] = [];
+
+  constructor(private documentService: DocumentService) { }
 
   ngOnInit(): void {
+    this.documents = this.documentService.getDocuments();
+    this.documentService.documentSelectedEvent
+    .subscribe(
+      (documents: Document[]) => {
+      this.documents = documents;
+    });
   }
 
   onSelectedDocument(document: Document) {
-    this.selectedDocumentEvent.emit(document);
+    this.documentService.documentSelectedEvent.emit(document);
   }
 
 }
