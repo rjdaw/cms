@@ -9,16 +9,16 @@ import { DocumentService } from './document.service';
   providers: [DocumentService]
 })
 export class DocumentsComponent implements OnInit {
-  selectedDocument: Document;
+  // selectedDocument: Document;
   constructor(private documentService: DocumentService) { }
 
   ngOnInit(): void {
-    this.documentService.documentSelectedEvent
-    .subscribe(
-      (document: Document) => {
-        this.selectedDocument = document;
-      }
-    )
+    // this.documentService.documentSelectedEvent
+    // .subscribe(
+    //   (document: Document) => {
+    //     this.selectedDocument = document;
+    //   }
+    // )
   }
 
 }
