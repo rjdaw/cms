@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ContactService } from './contacts/contact.service';
 
 @Component({
   selector: 'cms-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'WeLearn CMS!';
+
+  constructor(private contactService: ContactService) {}
+
 }

@@ -1,8 +1,8 @@
-<a [routerLink]="[contact?.id]" routerLinkActive="active" class="list-group-item clearfix">
-    <div class="pull-left">
-      <h4 class="list-group-item-heading">{{ contact?.name }}</h4>
-    </div>
-    <span class="pull-right">
-      <img [src]="contact?.imageUrl" alt="{{ contact?.name }}" class="img-responsive">
-    </span>
-  </a>
+<a style="cursor: pointer;" [routerLink]="[contact.id]" routerLinkActive="active" class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{contact?.name}}</h4>
+  </div>
+  <span class="pull-right">
+    <img *ngIf="contact?.imageUrl" [src]="contact?.imageUrl" alt="{{ contact?.name }}" class="img-responsive">
+  </span>
+</a>

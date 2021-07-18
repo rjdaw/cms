@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Contact } from '../contact.model';
+import { Contact } from '../contact.model'
 import { ContactService } from '../contact.service';
 
 @Component({
@@ -10,19 +10,22 @@ import { ContactService } from '../contact.service';
 })
 export class ContactDetailComponent implements OnInit {
   contact: Contact;
-  id: string;
+  id: number;
 
-  constructor(private contactService: ContactService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+  constructor(
+    private contactService: ContactService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id = params['id'];
-        this.contact = this.contactService.getContact(this.id);
-      }
-    );
+    this.route.params
+      .subscribe(
+        (params: Params) => {
+          this.id = params['id'];
+          this.contact = this.contactService.getContact((+params['id']).toString())
+        }
+      )
   }
 
   onDelete() {

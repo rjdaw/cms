@@ -1,20 +1,22 @@
 <div class="row">
-  <div class="panel panel-default">
-    <div class="col-xs-12 panel-heading">
-      <div class="col-xs-9">
-        <span class="heading">Contacts</span>
-      </div>
-      <div class="col-xs-3">
-        <a [routerLink]="['new']" routerLinkActive="active" class="btn btn-success">New Contact</a>
-      </div>
-    </div>
-    <div class="panel-body">
-      <div class="row">
-        <div class="col-xs-12 margin-top">
-          <cms-contact-item
-          *ngFor="let contactEl of contacts"
-          [contact]="contactEl"></cms-contact-item>
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading clearfix">
+        <h2 class="pull-left" style="margin-top:0;margin-bottom:0;">Contacts</h2>
+        <div class="pull-right pad-left-right">
+          <button class="btn btn-success pull-right" [routerLink]="['new']">New Contact</button>
         </div>
+        <div class="input-group pull-left pad-left-right col-xs-7">
+          <input type="text" class="form-control" #searchBox (keyup)="search(searchBox.value)" placeholder="Search...">
+          <div class="glyphicon glyphicon-search input-group-addon" (click)="search(searchBox.value)"></div>
+        </div>
+      </div>
+      <div class="panel-body">
+        <cms-contact-item
+          *ngFor="let contactEl of contacts | contactsFilter:term, let i = index, let contact of contacts"
+          [contact]="contactEl" dnd-draggable [dragEnabled]="true" [dragData]="contactEl"
+          [dropZones]="['contactGroup']">
+        </cms-contact-item>
       </div>
     </div>
   </div>

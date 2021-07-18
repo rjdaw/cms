@@ -1,7 +1,9 @@
+import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ContactDetailComponent } from "./contacts/contact-detail/contact-detail.component";
 import { ContactEditComponent } from "./contacts/contact-edit/contact-edit.component";
+import { ContactItemComponent } from "./contacts/contact-item/contact-item.component";
 import { ContactsComponent } from "./contacts/contacts.component";
 import { DocumentDetailComponent } from "./documents/document-detail/document-detail.component";
 import { DocumentEditComponent } from "./documents/document-edit/document-edit.component";
@@ -18,17 +20,20 @@ const appRoutes: Routes = [
         ]
     },
     { path: 'messages', component: MessageListComponent },
-    { path: 'contacts', component: ContactsComponent, children: [
-        { path: 'new', component: ContactEditComponent },
-        { path: ':id', component: ContactDetailComponent },
-        { path: ':id/edit', component: ContactEditComponent }
-    ] }
-];
+    {
+        path: 'contacts', component: ContactsComponent,
+        children: [
+            { path: 'new', component: ContactEditComponent },
+            { path: ':id', component: ContactDetailComponent },
+            { path: ':id/edit', component: ContactEditComponent }
+        ]
+    }
+]
 
 @NgModule({
     imports: [RouterModule.forRoot(appRoutes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule {
 
+export class AppRoutingModule {
 }
