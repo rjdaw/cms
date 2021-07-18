@@ -30,7 +30,7 @@ export class MessageService {
   }
 
   getMessages() {
-    this.http.get('http://localhost:3000/messages').subscribe(
+    this.http.get('http://localhost:4200/messages').subscribe(
        (messages: any) => {
          console.log(messages);
          console.log("hello")

@@ -35,7 +35,7 @@ export class ContactService {
    }
 
    getContacts() {
-    this.http.get('http://localhost:3000/contacts').subscribe(
+    this.http.get('http://localhost:4200/contacts').subscribe(
       (contacts: any) => {
         this.contacts = contacts.contacts;
         this.sortAndSend();
